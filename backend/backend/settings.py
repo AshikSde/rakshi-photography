@@ -25,7 +25,17 @@ SECRET_KEY = 'django-insecure-a$2mqr@uuvrh=kta-66wg8jgmnl4^u=5-$6ndd+rglg9qzc2qj
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ["*"]
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    "rakshi-backend.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://rakshi-backend.onrender.com",
+]
 
 ALLOWED_HOSTS = []
 
