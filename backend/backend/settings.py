@@ -37,7 +37,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://rakshi-backend.onrender.com",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 # Application definition
