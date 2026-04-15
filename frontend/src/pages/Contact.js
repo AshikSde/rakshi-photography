@@ -25,54 +25,52 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://rakshi-backend.onrender.com/api/inquiry/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/api/inquiry/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
       await response.json();
+setMessage("Sent");
 
-      if (response.ok) {
-        const message = `New Booking Request:%0A
+   if (response.ok) {
+  const message = `New Booking Request:%0A
 Name: ${form.name}%0A
 Phone: ${form.phone}%0A
 Event: ${form.event}%0A
 Date: ${form.date}%0A
 Message: ${form.message}`;
 
-        window.open(
-          `https://wa.me/918148152321?text=${message}`,
-          "_blank"
-        );
+  window.open(
+    `https://wa.me/918148152321?text=${message}`,
+    "_blank"
+  );
 
-        Swal.fire({
-          icon: "success",
-          title: "Booking Submitted!",
-          text: "We will contact you soon.",
-          confirmButtonColor: "#eab308",
-        });
+  Swal.fire({
+    icon: "success",
+    title: "Booking Submitted!",
+    text: "We will contact you soon.",
+    confirmButtonColor: "#eab308",
+  });
 
-        setForm({
-          name: "",
-          phone: "",
-          event: "",
-          date: "",
-          message: "",
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Failed",
-          text: "Please try again.",
-          confirmButtonColor: "#eab308",
-        });
-      }
+  setForm({
+    name: "",
+    phone: "",
+    event: "",
+    date: "",
+    message: "",
+  });
+} else {
+  Swal.fire({
+    icon: "error",
+    title: "Failed",
+    text: "Please try again.",
+    confirmButtonColor: "#eab308",
+  });
+}
     } catch (error) {
       Swal.fire({
         icon: "error",
