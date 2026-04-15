@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-a$2mqr@uuvrh=kta-66wg8jgmnl4^u=5-$6ndd+rglg9qzc2qj
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-DEBUG = False
+
 
 ALLOWED_HOSTS = [
     "rakshi-backend.onrender.com",
@@ -37,7 +37,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://rakshi-backend.onrender.com",
 ]
 
-ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
