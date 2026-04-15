@@ -33,7 +33,8 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
-      const data = await response.json();
+      await response.json();
+setMessage("Sent");
 
    if (response.ok) {
   const message = `New Booking Request:%0A
