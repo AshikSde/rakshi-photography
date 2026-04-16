@@ -1,11 +1,26 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 
 export default function Photos() {
   const location = useLocation();
+  const navigate = useNavigate();
   const album = location.state;
   const [selectedImage, setSelectedImage] = useState(null);
+
+  if (!album) {
+    return (
+      <div className="p-10 text-center">
+        <h1 className="text-3xl font-bold mb-4">Album Not Found</h1>
+        <button
+          onClick={() => navigate("/gallery")}
+          className="bg-yellow-500 px-6 py-3 rounded-xl font-bold"
+        >
+          Back to Gallery
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 md:p-10 bg-white text-gray-900 min-h-screen">
@@ -17,7 +32,6 @@ export default function Photos() {
         {album.title}
       </h1>
 
-      {/* Photo Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {album.photos.map((photo) => (
           <div
@@ -25,10 +39,12 @@ export default function Photos() {
             className="overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition duration-300"
           >
             <img
-              src={`http://127.0.0.1:8000${photo.image}`}
+              src={`https://rakshi-backend.onrender.com${photo.image}`}
               alt=""
               onClick={() =>
-                setSelectedImage(`http://127.0.0.1:8000${photo.image}`)
+                setSelectedImage(
+                  `https://rakshi-backend.onrender.com${photo.image}`
+                )
               }
               className="w-full h-64 object-cover cursor-pointer hover:scale-110 transition duration-500"
             />
@@ -36,7 +52,6 @@ export default function Photos() {
         ))}
       </div>
 
-      {/* Full Screen Modal */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
