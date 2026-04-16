@@ -9,7 +9,7 @@ export default function Gallery() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/categories/")
+      .get("https://rakshi-backend.onrender.com/api/categories/")
       .then((res) => {
         setCategories(res.data);
       })
@@ -30,12 +30,10 @@ export default function Gallery() {
 
       {categories.map((cat) => (
         <div key={cat.id} className="mb-16">
-          {/* Category Title */}
           <h2 className="text-3xl font-semibold mb-8 border-l-4 border-yellow-500 pl-4">
             {cat.name}
           </h2>
 
-          {/* Albums */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {cat.albums.map((album) => (
               <div
@@ -44,7 +42,7 @@ export default function Gallery() {
                 className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300 cursor-pointer border border-gray-100"
               >
                 <img
-                  src={`http://127.0.0.1:8000${album.cover_image}`}
+                  src={`https://rakshi-backend.onrender.com${album.cover_image}`}
                   alt={album.title}
                   className="w-full h-52 object-cover"
                 />
