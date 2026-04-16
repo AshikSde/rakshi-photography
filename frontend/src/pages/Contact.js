@@ -25,7 +25,7 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/inquiry/", {
+      const response = await fetch("https://rakshi-backend.onrender.com/api/inquiry/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,8 +33,7 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
-      await response.json();
-setMessage("Sent");
+     await response.json();
 
    if (response.ok) {
   const message = `New Booking Request:%0A
